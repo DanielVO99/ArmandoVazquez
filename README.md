@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 Proyecto Dinosaurio
 
@@ -11,3 +12,8 @@ Integrantes:
 
 
 
+=======
+Proyecto dinosaurio
+
+18320983 Ruiz Hernandez Mario Javier
+>>>>>>> MarioJavierRH
