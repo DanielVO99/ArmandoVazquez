@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 Proyecto Dinosaurio
 
@@ -9,11 +8,7 @@ Integrantes:
 18320876 Guerrero de Dios Laura Luz
 18320940 Francisco Navarrete Hernandez
 18320916 José Miguel Martinez Rosales 
-
-
-
-=======
-Proyecto dinosaurio
-
 18320983 Ruiz Hernandez Mario Javier
->>>>>>> MarioJavierRH
+
+
+
