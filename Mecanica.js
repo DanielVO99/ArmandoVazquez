@@ -37,11 +37,11 @@ function Borrado(){
     canvas.heigth = alto;
 }
 
-var piso = 250;
+var piso = 275;
 var Dino = {y:piso, Vy:0, gravedad:2, salto:25, Vymax:9, saltando: false};
 
 function DibujandoFondo(){
-    context.drawImage(imgFondo,0,0,626,345,0,0,800,400);
+    context.drawImage(imgFondo,0,0,607,317,0,0,800,400);
 }
 
 function dibujadoDino(){
