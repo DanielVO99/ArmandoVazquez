@@ -1,4 +1,3 @@
-
 Proyecto Dinosaurio
 
 Integrantes:
@@ -10,5 +9,7 @@ Integrantes:
 18320916 José Miguel Martinez Rosales 
 18320983 Ruiz Hernandez Mario Javier
 
-
+Profesor:
+===========================
+Uziel Trujillo Colon
 
