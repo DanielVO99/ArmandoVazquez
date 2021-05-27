@@ -49,8 +49,10 @@ function dibujadoDino(){
 }
 
 function dibujadoDino2(){ 
-    context.drawImage(imgDino2,0,0,60,40,100,Dino.y,80,80);
+    context.drawImage(imgDino2,0,0,560,540,100,Dino.y,80,80);
 }
+
+
 
 function Salto(){
     Dino.saltando = true;
