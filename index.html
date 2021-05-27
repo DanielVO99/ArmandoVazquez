@@ -2,26 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TRICERACOP</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-<body>
-   <canvas id="canvas" width="626" height="345"> 
-   </canvas> 
-   <script> var canvas = document.getElementById("canvas");
-   var ctx = canvas.getContext ("2d");
-
-   var miimagen = new Image(); 
-   miimagen.src = "entrada.jpeg";
-   miimagen.onload =function (){
-       ctx.drawImage(miimagen,0,0);
-
-     
-   }
-   
-   
-   
-   
-    </script>
-     <img src="dinosaurio.jpg">
+<body onload="inicializa();">
+    <canvas id = canvas width="800" height="400" style="border: 3px solid #000;"></canvas>
+    <script src="mecanismo.js"></script>
 </body>
 </html>
