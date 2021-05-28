@@ -1,6 +1,6 @@
 document.addEventListener('keydown', function(evento){
-    if(evento.keyCode == 32){
-        console.log("saltar");
+    if(evento.keyCode == 32, 38){
+        console.log("salto");
         Salto();
     }
 });
@@ -39,23 +39,57 @@ function Borrado(){
 
 var piso = 275;
 var Dino = {y:piso, Vy:0, gravedad:2, salto:25, Vymax:9, saltando: false};
+var nivel = {velocidad: 9, puntuacion:0, muerto: false};
+var obstaculo = {x:ancho + 100, y: piso};
+var fondog = {x:0, y:370};
 
-function DibujandoFondo(){
-    context.drawImage(imgFondo,0,0,607,317,0,0,800,400);
+function dibujaObstaculo(){
+    context.drawImage(imgObstaculo, 0,0, 38, 75, obstaculo.x, obstaculo.y, 38, 75);
 }
 
+
+//funcion para determinar el movimiento que hara el obstaculo
+function movObstaculo(){
+    if(obstaculo.x < -100){
+        obstaculo.x = ancho + 100;
+    }else{
+        obstaculo.x -= nivel.velocidad;
+    }
+}
+
+function DibujandoFondo(){
+    context.drawImage(imgFondo,fondog.x,0,607,317,0,0,800,400);
+}
+
+//movimiento de fondo (aun sin implementar)
+function movFondo(){
+    if(fondog.x > 800){
+        fondog.x = 0;
+    }else{
+        fondog.x += nivel.velocidad
+    }
+}
 function dibujadoDino(){
-    context.drawImage(imgDino,0,0,560,540,100,Dino.y,80,80);
+    context.drawImage(imgDino2,0,0,560,540,100,Dino.y,80,80);
 }
 
 function dibujadoDino2(){ 
-    context.drawImage(imgDino2,0,0,60,40,100,Dino.y,80,80);
+    context.drawImage(imgDino,0,0,60,40,100,Dino.y,80,80);
 }
 
 function Salto(){
     Dino.saltando = true;
     Dino.Vy = Dino.salto;
 
+}
+
+function colision(){
+    if(obstaculo.x >= 100 && obstaculo.x <= 160){
+        if(Dino.y >= piso){
+            nivel.muerto = true;
+            nivel.velocidad = 0;
+        }
+    }
 }
 
 
@@ -74,9 +108,9 @@ if(Dino.saltando == true){
 }
 }
 
-// bucle pirncipal
+// bucle principal
 
-var FPS = 60;
+var FPS = 30;
 setInterval(function(){
     Actualizar();
 },1000/FPS);
@@ -84,7 +118,10 @@ setInterval(function(){
 function Actualizar(){
     Borrado();
     Caida();
+    colision();
     DibujandoFondo();
+    movObstaculo();
+    dibujaObstaculo();
     dibujadoDino();
     dibujadoDino2();
 }
