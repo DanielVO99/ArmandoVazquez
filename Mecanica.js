@@ -14,7 +14,7 @@ imgFondo = new Image();
 imgDino2 = new Image();
 
 imgDino.src = "img/Dino.png";
-imgObstaculo.src = 'img/Obstaculo.png';
+imgObstaculo.src = 'img/Obstaculo.gif';
 imgFondo.src = 'img/Fondo.jpg';
 imgDino2.src = 'img/Dino2.png'
 }
@@ -44,7 +44,7 @@ var obstaculo = {x:ancho + 100, y: piso};
 var fondog = {x:0, y:370};
 
 function dibujaObstaculo(){
-    context.drawImage(imgObstaculo, 0,0, 38, 75, obstaculo.x, obstaculo.y, 38, 75);
+    context.drawImage(imgObstaculo, 0,0, 60, 64, obstaculo.x, obstaculo.y, 38, 75);
 }
 
 
