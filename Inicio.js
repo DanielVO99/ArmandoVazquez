@@ -1,0 +1,1 @@
+context.drawImage(Entrada.jpeg,0,0);
