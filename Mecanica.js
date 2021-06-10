@@ -1,21 +1,23 @@
 document.addEventListener('keydown', function(evento){
-    if(evento.keyCode == 32, 38){
+    if(evento.keyCode == 32 || evento.keyCode == 38){
         console.log("salto");
         Salto();
     }
 });
 
-var imgDino, imgDino2, imgNube, imgObstaculo, imgSuelo, imgFondo;
+var imgDino, imgDino2, imgNube, imgObstaculo, imgSuelo, imgFondog;
 
 function Imagenes(){
 imgDino = new Image();
 imgObstaculo = new Image();
-imgFondo = new Image();
+//imgFondo = new Image();
+imgFondog = new Image();
 imgDino2 = new Image();
 
 imgDino.src = "img/Dino.png";
 imgObstaculo.src = 'img/Obstaculo.gif';
-imgFondo.src = 'img/Fondo.jpg';
+//imgFondo.src = 'img/Fondo.jpg';
+imgFondog.src = 'img/Fondog.jpg';
 imgDino2.src = 'img/Dino2.png'
 }
 
@@ -39,38 +41,39 @@ function Borrado(){
 
 var piso = 275;
 var Dino = {y:piso, Vy:0, gravedad:2, salto:25, Vymax:9, saltando: false};
-var nivel = {velocidad: 9, puntuacion:0, muerto: false};
+var nivel = {velocidad: 13, puntuacion:0, muerto: false};
 var obstaculo = {x:ancho + 100, y: piso};
-var fondog = {x:0, y:370};
+var fondog = {x:0, y:0};
 
 function dibujaObstaculo(){
-    context.drawImage(imgObstaculo, 0,0, 60, 64, obstaculo.x, obstaculo.y, 38, 75);
+    context.drawImage(imgObstaculo, 0,0, 64, 64, obstaculo.x, obstaculo.y, 60, 75);
 }
 
 
 //funcion para determinar el movimiento que hara el obstaculo
 function movObstaculo(){
-    if(obstaculo.x < -100){
+    if(obstaculo.x < -50){
         obstaculo.x = ancho + 100;
+        nivel.puntuacion++;
     }else{
         obstaculo.x -= nivel.velocidad;
     }
 }
 
 function DibujandoFondo(){
-    context.drawImage(imgFondo,fondog.x,0,607,317,0,0,800,400);
+    context.drawImage(imgFondog,fondog.x,0,1908,512,0,fondog.y,800,400);
 }
 
 //movimiento de fondo (aun sin implementar)
 function movFondo(){
-    if(fondog.x > 800){
+    if(fondog.x > 1908){
         fondog.x = 0;
     }else{
         fondog.x += nivel.velocidad
     }
 }
 function dibujadoDino(){
-    context.drawImage(imgDino2,0,0,560,540,100,Dino.y,80,80);
+    context.drawImage(imgDino2,0,0,480,480,100,Dino.y,80,80);
 }
 
 function dibujadoDino2(){ 
@@ -84,14 +87,13 @@ function Salto(){
 }
 
 function colision(){
-    if(obstaculo.x >= 100 && obstaculo.x <= 160){
+    if(obstaculo.x >= 100 && obstaculo.x <= 170){
         if(Dino.y >= piso){
             nivel.muerto = true;
             nivel.velocidad = 0;
         }
     }
 }
-
 
 function Caida(){
 if(Dino.saltando == true){
@@ -108,8 +110,16 @@ if(Dino.saltando == true){
 }
 }
 
-// bucle principal
+function Score(){
+    context.fillStyle = '#F9FB22';
+    context.fillRect(725, 15, 60, 40);
 
+    context.font = "40px Impact";
+    context.fillStyle = "#000000";
+    context.fillText(`${nivel.puntuacion}`, 740, 50);
+}
+
+// bucle principal
 var FPS = 30;
 setInterval(function(){
     Actualizar();
@@ -119,9 +129,11 @@ function Actualizar(){
     Borrado();
     Caida();
     colision();
+    movFondo();
     DibujandoFondo();
     movObstaculo();
     dibujaObstaculo();
     dibujadoDino();
     dibujadoDino2();
+    Score();
 }
