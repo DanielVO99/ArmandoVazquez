@@ -44,7 +44,7 @@ var obstaculo = {x:ancho + 100, y: piso};
 var fondog = {x:0, y:370};
 
 function dibujaObstaculo(){
-    context.drawImage(imgObstaculo, 0,0, 60, 64, obstaculo.x, obstaculo.y, 38, 75);
+    context.drawImage(imgObstaculo, 0,0, 60, 65, obstaculo.x, obstaculo.y, 38, 75);
 }
 
 
@@ -69,6 +69,7 @@ function movFondo(){
         fondog.x += nivel.velocidad
     }
 }
+
 function dibujadoDino(){
     context.drawImage(imgDino2,0,0,560,540,100,Dino.y,80,80);
 }
@@ -78,8 +79,10 @@ function dibujadoDino2(){
 }
 
 function Salto(){
+    if(Dino.y=piso){
     Dino.saltando = true;
     Dino.Vy = Dino.salto;
+    }
 
 }
 
