@@ -1,7 +1,10 @@
 document.addEventListener('keydown', function(evento){
     if(evento.keyCode == 32 || evento.keyCode == 38){
         console.log("salto");
-        Salto();
+        if(nivel.muerto == false){
+            Salto();
+        }
+       
     }
 });
 
@@ -66,7 +69,7 @@ function DibujandoFondo(){
     context.drawImage(imgFondog,fondog.x,0,1908,512,0,fondog.y,800,400);
 }
 
-//movimiento de fondo (aun sin implementar)
+
 function movFondo(){
     if(fondog.x > 1908){
         fondog.x = 0;
@@ -77,11 +80,10 @@ function movFondo(){
 
 function dibujadoDino(){
     context.drawImage(imgDino2,0,0,480,480,100,Dino.y,80,80);
+    context.drawImage(imgDino,0,0,480,480,100,Dino.y,80,80);
 }
 
-function dibujadoDino2(){ 
-    context.drawImage(imgDino,0,0,60,40,100,Dino.y,80,80);
-}
+
 
 function Salto(){
     if(Dino.y=piso){
@@ -122,6 +124,16 @@ function Score(){
     context.font = "40px Impact";
     context.fillStyle = "#000000";
     context.fillText(`${nivel.puntuacion}`, 740, 50);
+
+    if(nivel.muerto == true){
+        context.fillStyle = '#F9FB22';
+        context.fillRect(84, 100, 630, 110);
+
+        context.font = "60px Inpact";
+        context.fillStyle = "#000000";
+        context.fillText('FIN DEL JUEGO', 150, 150); 
+        context.fillText(`TU PUNTUACION ES: ${nivel.puntuacion}`, 80, 200); 
+    }
 }
 
 // bucle principal
@@ -139,6 +151,5 @@ function Actualizar(){
     movObstaculo();
     dibujaObstaculo();
     dibujadoDino();
-    dibujadoDino2();
     Score();
 }
